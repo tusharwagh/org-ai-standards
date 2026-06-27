@@ -56,4 +56,4 @@ scripts/                    # check-standards, build-manifest
 bootstrap/                  # materialize, verify
 ```
 
-See LMS-AI [template-standards-plan.md](https://github.com/) for rollout phases.
+See LMS-AI [template-standards-plan.md](docs/PLAN-LINK.md) for rollout phases.
