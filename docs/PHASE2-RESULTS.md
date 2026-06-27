@@ -19,4 +19,4 @@ make bootstrap-org-ai-standards
 # or: scripts/bootstrap-org-ai-standards.sh [target-dir] [version]
 ```
 
-**Next:** Phase 3 — LMS-AI submodule pilot @ `v1.0.0`.
+**Next:** Phase 3 complete — see [PHASE3-RESULTS.md](PHASE3-RESULTS.md).

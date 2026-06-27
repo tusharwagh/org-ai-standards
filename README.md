@@ -2,38 +2,66 @@
 
 Delivery template for AI-assisted repositories — generic Cursor rules/skills, AI-SDLC bootstrap assets, profiles, and drift checking.
 
-**Release:** v1.0.0 (semver tag `v1.0.0`)  
+**Repository:** https://github.com/tusharwagh/org-ai-standards  
+**Latest release:** v1.0.1 (tag `v1.0.1`)  
 **Governance:** [GOVERNANCE.md](GOVERNANCE.md)
 
 ## Profiles
 
 | Profile | Purpose |
 |---------|---------|
-| `core` | AI-SDLC templates, traceability assets, core rules (required) |
+| `core` | AI-SDLC templates, traceability assets, core rules (**required**) |
 | `python` | Python / FastAPI engineering rules and skills |
 | `agentic` | LLM / agent governance skill |
 | `frontend` | Frontend UI engineering rule |
 
 Example: `core,python,agentic,frontend`
 
-## Product repo bootstrap (Phase 3+)
+## Product repo integration (LMS-AI pilot)
+
+[LMS-AI](https://github.com/tusharwagh/LMS-AI) consumes this repo as a **git submodule** at `standards/`:
+
+```text
+LMS-AI/
+├── standards/              ← submodule → this repo @ pinned commit/tag
+├── .standards-version      ← e.g. 1.0.1
+├── .standards-latest       ← latest template release (for stale checks)
+├── .standards-profiles     ← e.g. core,python,agentic,frontend
+├── .standards-copied-at    ← audit trail after materialize/upgrade
+├── .cursor/rules/generic/  ← copies (managed — do not edit in place)
+└── .cursor/rules/lms-ai/   ← project overlay (never drift-checked)
+```
+
+LMS-AI commands: `make check-standards`, `make standards-materialize`, `make standards-upgrade`.
+
+See [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) for pilot verification and CI notes.
+
+## Bootstrap a new product repo
 
 ```bash
-# Add submodule @ tag
-git submodule add -b v1.0.0 <REPO_URL> standards
-git submodule update --init --recursive
+git submodule add https://github.com/tusharwagh/org-ai-standards.git standards
+cd standards && git checkout v1.0.1 && cd ..
 
-# Pin and profiles (copy examples to repo root)
 cp standards/.standards-version.example .standards-version
 cp standards/.standards-latest.example .standards-latest
 cp standards/.standards-profiles.example .standards-profiles
 
-# Materialize managed copies into .cursor/
-standards/bootstrap/standards-materialize.sh
+chmod +x standards/bootstrap/standards-materialize.sh
+STANDARDS_ROOT="$PWD" STANDARDS_REFERENCE=standards \
+  STANDARDS_MANIFEST=standards/manifest.json \
+  STANDARDS_PROFILES_FILE=.standards-profiles \
+  ./standards/bootstrap/standards-materialize.sh
 
-# Drift check
-standards/scripts/check-standards.sh
+chmod +x standards/scripts/check-standards.sh
+STANDARDS_ROOT="$PWD" STANDARDS_REFERENCE=standards \
+  STANDARDS_MANIFEST=standards/manifest.json \
+  STANDARDS_VERSION_FILE=.standards-version \
+  STANDARDS_LATEST_FILE=.standards-latest \
+  STANDARDS_PROFILES_FILE=.standards-profiles \
+  ./standards/scripts/check-standards.sh
 ```
+
+**CI:** Use an **HTTPS submodule URL** in `.gitmodules` (not a relative path). Checkout with `submodules: recursive`. See [docs/RELEASE.md](docs/RELEASE.md).
 
 ## Template repo self-check
 
@@ -44,16 +72,41 @@ cp .standards-profiles.example .standards-profiles
 ./bootstrap/verify-template.sh
 ```
 
+## Release a new version
+
+1. Merge changes to `main`
+2. Update `VERSION` and `CHANGELOG.md`
+3. Tag semver: `git tag -a vX.Y.Z -m "..."`
+4. **Push before any product repo bumps the submodule pointer:**
+
+```bash
+git push origin main --tags
+```
+
+5. Product repos: `make standards-upgrade VERSION=X.Y.Z` (or equivalent) and commit the new submodule SHA.
+
+Full checklist: [docs/RELEASE.md](docs/RELEASE.md)
+
 ## Layout
 
 ```text
-cursor/rules/generic/       # canonical Cursor rules
-cursor/skills/generic/      # canonical skills
-docs/ai-sdlc/templates/   # AI-SDLC bootstrap templates
-profiles/                   # profile indexes
-manifest.json               # managed paths
-scripts/                    # check-standards, build-manifest
-bootstrap/                  # materialize, verify
+cursor/rules/generic/         # canonical Cursor rules
+cursor/skills/generic/        # canonical skills
+docs/ai-sdlc/templates/       # AI-SDLC bootstrap templates
+profiles/                     # profile indexes
+manifest.json                 # managed paths (26 entries @ v1.0.1)
+scripts/                      # check-standards, build-manifest, verify-phase2
+bootstrap/                    # materialize, verify-template
+GOVERNANCE.md                 # ownership, change flow, contributions
 ```
 
-See LMS-AI [template-standards-plan.md](docs/PLAN-LINK.md) for rollout phases.
+## Related docs
+
+| Doc | Purpose |
+|-----|---------|
+| [GOVERNANCE.md](GOVERNANCE.md) | Roles, change authority, upgrade, contributions |
+| [docs/RELEASE.md](docs/RELEASE.md) | Publish tags + product-repo bump order |
+| [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI submodule fix |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+
+Spec and plan live in LMS-AI: `docs/template-standards-research.md`, `docs/template-standards-plan.md`.

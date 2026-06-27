@@ -51,8 +51,9 @@ Org-level profiles (`org-architecture`, `org-technology`, `org-business`) are de
 
 1. Change proposed via **PR** to template repo (or LMS-AI fixture during Phase 1).
 2. **Template owner** reviews and merges.
-3. **Template owner** cuts semver tag and updates `CHANGELOG.md`.
-4. Product repos remain on old pin until maintainers run upgrade (§5).
+3. **Template owner** cuts semver tag, updates `VERSION` and `CHANGELOG.md`.
+4. **Template owner pushes** to GitHub: `git push origin main --tags` (required before product repos bump submodule — see [docs/RELEASE.md](docs/RELEASE.md)).
+5. Product repos remain on old pin until maintainers run upgrade (§5).
 
 **Semver:**
 
@@ -82,7 +83,7 @@ Org-level profiles (`org-architecture`, `org-technology`, `org-business`) are de
 | Run `standards upgrade` / re-materialize | **Repository maintainers** | Same PR; updates submodule pointer and managed copies |
 | AI agent executes upgrade | **Blocked** | Human must request explicitly (same as merge/push) |
 
-After upgrade: append entry to [docs/ai-sdlc/CHANGELOG.md](../ai-sdlc/CHANGELOG.md).
+After upgrade: append entry to the product repo's `docs/ai-sdlc/CHANGELOG.md` (e.g. LMS-AI).
 
 ---
 
@@ -147,10 +148,10 @@ v1: **No waivers.** Fix diverged paths by revert, overlay, or upstream. Revisit 
 
 | Doc | Purpose |
 |-----|---------|
-| project CHARTER (instantiated) | LMS-AI AI-SDLC gates including standards upgrade |
-| [template-standards-research.md](docs/SPEC-LINK.md) | Full spec |
-| [template-standards-plan.md](docs/PLAN-LINK.md) | Phased implementation |
-
----
+| [README.md](README.md) | Bootstrap, layout, LMS-AI integration |
+| [docs/RELEASE.md](docs/RELEASE.md) | Push tags before product submodule bump |
+| [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI fix |
+| [template-standards-research.md](docs/SPEC-LINK.md) | Full spec (LMS-AI) |
+| [template-standards-plan.md](docs/PLAN-LINK.md) | Phased implementation (LMS-AI) |
 
 

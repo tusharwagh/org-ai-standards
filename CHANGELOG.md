@@ -7,6 +7,7 @@ All notable template releases use [semver](https://semver.org/).
 ### Changed
 
 - Phase 3 pilot patch (LMS-AI submodule integration verification)
+- Docs: RELEASE checklist, PHASE3-RESULTS, README (GitHub URL, CI, publish order)
 
 ## [1.0.0] - 2026-06-27
 
