@@ -3,8 +3,8 @@
 Delivery template for AI-assisted repositories — generic Cursor rules/skills, AI-SDLC bootstrap assets, profiles, and drift checking.
 
 **Repository:** https://github.com/tusharwagh/org-ai-standards  
-**Latest release:** v1.0.1 (tag `v1.0.1`)  
-**Governance:** [GOVERNANCE.md](GOVERNANCE.md)
+**Latest release:** v1.0.2 (tag `v1.0.2`)  
+**Governance:** [GOVERNANCE.md](GOVERNANCE.md) · **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Profiles
 
@@ -32,7 +32,7 @@ LMS-AI/
 └── .cursor/rules/lms-ai/   ← project overlay (never drift-checked)
 ```
 
-LMS-AI commands: `make check-standards`, `make standards-materialize`, `make standards-upgrade`.
+LMS-AI commands: `make check-standards`, `make standards-materialize`, `make standards-upgrade`, `make standards-contribute`.
 
 See [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) for pilot verification and CI notes.
 
@@ -104,8 +104,10 @@ GOVERNANCE.md                 # ownership, change flow, contributions
 
 | Doc | Purpose |
 |-----|---------|
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution loop, issue template, `standards-contribute` |
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, change authority, upgrade, contributions |
 | [docs/RELEASE.md](docs/RELEASE.md) | Publish tags + product-repo bump order |
+| [docs/PHASE4-RESULTS.md](docs/PHASE4-RESULTS.md) | Contribution loop verification |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI submodule fix |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 

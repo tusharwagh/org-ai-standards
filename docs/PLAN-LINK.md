@@ -6,8 +6,10 @@ Phased rollout (Phases 0–6) is tracked in LMS-AI:
 
 | Phase | Status | Doc |
 |-------|--------|-----|
-| 0 Governance | Complete | LMS-AI `docs/template-standards/GOVERNANCE.md` |
-| 1 Mechanics lab | Complete | LMS-AI `scripts/standards-fixture/TEST-RESULTS.md` |
+| 0 Governance | Complete | [GOVERNANCE.md](../GOVERNANCE.md) |
+| 1 Mechanics lab | Complete (promoted to this repo) | [PHASE2-RESULTS.md](PHASE2-RESULTS.md) |
 | 2 Template repo v1.0.0 | Complete | [PHASE2-RESULTS.md](PHASE2-RESULTS.md) |
 | 3 LMS-AI pilot | Complete | [PHASE3-RESULTS.md](PHASE3-RESULTS.md) |
 | 4 Contribution loop | Pending | — |
+
+**Note:** Phase 1 fixture lab (`scripts/standards-fixture/`) was removed from LMS-AI after Phase 3. Mechanics live in this template repo (`scripts/check-standards.sh`, `bootstrap/standards-materialize.sh`, `bootstrap/verify-template.sh`).

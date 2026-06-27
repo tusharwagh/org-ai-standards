@@ -148,7 +148,8 @@ v1: **No waivers.** Fix diverged paths by revert, overlay, or upstream. Revisit 
 
 | Doc | Purpose |
 |-----|---------|
-| [README.md](README.md) | Bootstrap, layout, LMS-AI integration |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose generic standard improvements |
+| [contributions/decisions/](contributions/decisions/) | Accept/reject decision records |
 | [docs/RELEASE.md](docs/RELEASE.md) | Push tags before product submodule bump |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI fix |
 | [template-standards-research.md](docs/SPEC-LINK.md) | Full spec (LMS-AI) |

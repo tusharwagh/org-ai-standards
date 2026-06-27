@@ -1,0 +1,97 @@
+name: Standard contribution
+description: Propose an improvement to generic delivery standards (rules, skills, templates)
+title: "contrib: "
+labels:
+  - contribution
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when a product repo has a **contribution candidate** — a generic improvement discovered during delivery.
+
+        **Do not** use for LMS-specific or project-only changes (use the product repo overlay instead).
+
+        See [GOVERNANCE.md §6](https://github.com/tusharwagh/org-ai-standards/blob/main/GOVERNANCE.md#6-contribution-loop-g5) and [CONTRIBUTING.md](https://github.com/tusharwagh/org-ai-standards/blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: Source product repo
+      description: Where the improvement was discovered (e.g. LMS-AI).
+      placeholder: tusharwagh/LMS-AI
+    validations:
+      required: true
+
+  - type: input
+    id: standards-version
+    attributes:
+      label: Pinned standards version
+      description: Product repo `.standards-version` when the candidate was found.
+      placeholder: "1.0.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One paragraph — what should change and why it belongs in generic standards.
+      placeholder: Clarify when to upstream rule improvements instead of editing managed copies locally.
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-paths
+    attributes:
+      label: Affected managed paths
+      description: Paths from `check-standards` drift report or proposed template paths (one per line).
+      placeholder: |
+        .cursor/rules/generic/code-simplification.md
+        cursor/rules/generic/code-simplification.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Proposed change
+      description: Diff summary, draft text, or link to a branch/PR.
+      placeholder: Add bullet under "When NOT to use" pointing contributors to this issue template.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: profiles
+    attributes:
+      label: Affected profiles
+      options:
+        - core
+        - python
+        - agentic
+        - frontend
+        - core + python
+        - core + agentic
+        - multiple / other
+    validations:
+      required: true
+
+  - type: textarea
+    id: drift-report
+    attributes:
+      label: Drift report (optional)
+      description: Paste JSON or output from `make check-standards` / `make standards-contribute`.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Contributor checklist
+      options:
+        - label: Change is generic (not product-specific business logic or overlay material)
+          required: true
+        - label: I will not leave unmanaged edits in the product repo's managed copies long-term
+          required: true
+        - label: I understand product delivery is not blocked while this is under review (warn-only CI)
+          required: false

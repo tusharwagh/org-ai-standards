@@ -2,6 +2,17 @@
 
 All notable template releases use [semver](https://semver.org/).
 
+## [1.0.2] - 2026-06-27
+
+### Added
+
+- Phase 4 contribution loop: GitHub issue template, [CONTRIBUTING.md](CONTRIBUTING.md), `scripts/standards-contribute.sh`
+- `contributions/decisions/` accept/reject decision records
+
+### Changed
+
+- `code-simplification` rule: bullet pointing contributors to standard contribution issues (dry-run accepted contribution)
+
 ## [1.0.1] - 2026-06-27
 
 ### Changed

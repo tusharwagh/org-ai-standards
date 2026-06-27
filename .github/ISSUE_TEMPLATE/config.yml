@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Governance (roles, upgrade, contributions)
+    url: https://github.com/tusharwagh/org-ai-standards/blob/main/GOVERNANCE.md
+    about: Template owner responsibilities and contribution loop
+  - name: Release checklist
+    url: https://github.com/tusharwagh/org-ai-standards/blob/main/docs/RELEASE.md
+    about: Tag and push order before product repos bump submodule
