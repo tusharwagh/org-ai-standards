@@ -51,7 +51,7 @@ Run template self-check:
 
 ## LMS-AI follow-up
 
-See LMS-AI `docs/template-standards/PHASE4-RESULTS.md`.
+See [PHASE4-RESULTS.md](PHASE4-RESULTS.md) in this repo.
 
 ## Next
 

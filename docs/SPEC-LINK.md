@@ -1,8 +1,7 @@
-# Specification (external)
+# Specification
 
-Full template-standards specification is maintained in the **LMS-AI** repository during rollout:
+Full template-standards specification:
 
-- **Research spec:** [template-standards-research.md](https://github.com/tusharwagh/LMS-AI/blob/main/docs/template-standards-research.md)
-- **Implementation plan:** [template-standards-plan.md](https://github.com/tusharwagh/LMS-AI/blob/main/docs/template-standards-plan.md)
+- [SPEC.md](SPEC.md) — research, agreed decisions, backlog
 
-This template repo implements the **Minimal v1** package from that spec.
+Historical birthplace: LMS-AI (moved here during post–Phase 6 cleanup).

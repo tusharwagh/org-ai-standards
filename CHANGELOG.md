@@ -12,6 +12,13 @@ All notable template releases use [semver](https://semver.org/).
 
 Product repos pin via `.standards-version` and upgrade with `standards-upgrade` / `make standards-upgrade`.
 
+## [1.1.1] - 2026-06-27
+
+### Changed
+
+- Moved specification and rollout plan from LMS-AI to `docs/SPEC.md` and `docs/ROLLOUT.md`
+- Updated SPEC-LINK and PLAN-LINK to canonical paths
+
 ## [1.1.0] - 2026-06-27
 
 ### Added

@@ -100,6 +100,7 @@ GOVERNANCE.md                 # ownership, change flow, contributions
 | [docs/PHASE6-RESULTS.md](docs/PHASE6-RESULTS.md) | Scale-out pilot + standards-init |
 | [docs/PHASE4-RESULTS.md](docs/PHASE4-RESULTS.md) | Contribution loop verification |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI submodule fix |
-| [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [docs/SPEC.md](docs/SPEC.md) | Full specification |
+| [docs/ROLLOUT.md](docs/ROLLOUT.md) | Phased rollout (complete) |
 
-Spec and plan live in LMS-AI: `docs/template-standards-research.md`, `docs/template-standards-plan.md`.
+Spec and plan: [docs/SPEC.md](SPEC.md), [docs/ROLLOUT.md](ROLLOUT.md).

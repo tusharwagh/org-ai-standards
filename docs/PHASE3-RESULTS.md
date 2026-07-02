@@ -39,7 +39,7 @@
 | V3.5 | Upgrade 1.0.0 → 1.0.1 | PASS |
 | V3.6 | Cursor paths present | PASS |
 
-LMS-AI detail: `docs/template-standards/PHASE3-RESULTS.md` in the LMS-AI repo.
+LMS-AI pilot detail: [org-ai-standards PHASE3-RESULTS.md](https://github.com/tusharwagh/org-ai-standards/blob/main/docs/PHASE3-RESULTS.md).
 
 ## Next
 

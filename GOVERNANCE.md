@@ -2,8 +2,8 @@
 
 **Status:** Active (Phase 0 — Jun 2026)  
 **Scope:** Delivery template (`core`, `python`, `agentic`, `frontend`) for AI-assisted repos  
-**Spec:** [template-standards-research.md](docs/SPEC-LINK.md)  
-**Plan:** [template-standards-plan.md](docs/PLAN-LINK.md)
+**Spec:** [docs/SPEC.md](docs/SPEC-LINK.md)  
+**Plan:** [docs/ROLLOUT.md](docs/PLAN-LINK.md)
 
 Authoritative governance for the **org-ai-standards** delivery template repository.
 
@@ -152,7 +152,7 @@ v1: **No waivers.** Fix diverged paths by revert, overlay, or upstream. Revisit 
 | [contributions/decisions/](contributions/decisions/) | Accept/reject decision records |
 | [docs/RELEASE.md](docs/RELEASE.md) | Push tags before product submodule bump |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI fix |
-| [template-standards-research.md](docs/SPEC-LINK.md) | Full spec (LMS-AI) |
-| [template-standards-plan.md](docs/PLAN-LINK.md) | Phased implementation (LMS-AI) |
+| [docs/SPEC.md](docs/SPEC-LINK.md) | Full specification |
+| [docs/ROLLOUT.md](docs/PLAN-LINK.md) | Phased rollout (complete) |
 
 
