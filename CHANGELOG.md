@@ -12,6 +12,12 @@ All notable template releases use [semver](https://semver.org/).
 
 Product repos pin via `.standards-version` and upgrade with `standards-upgrade` / `make standards-upgrade`.
 
+## [1.1.3] - 2026-07-02
+
+### Changed
+
+- PHASE3-RESULTS: historical note that warn-only was superseded by Phase 5 fail mode
+
 ## [1.1.2] - 2026-07-02
 
 ### Changed

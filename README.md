@@ -3,7 +3,7 @@
 Delivery template for AI-assisted repositories — generic Cursor rules/skills, AI-SDLC bootstrap assets, profiles, and drift checking.
 
 **Repository:** https://github.com/tusharwagh/org-ai-standards  
-**Latest release:** v1.1.1 (tag `v1.1.1`)  
+**Latest release:** v1.1.3 (tag `v1.1.3`)  
 **Governance:** [GOVERNANCE.md](GOVERNANCE.md) · **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Profiles

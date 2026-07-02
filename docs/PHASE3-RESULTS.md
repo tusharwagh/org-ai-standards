@@ -4,6 +4,8 @@
 **Template pin:** v1.0.1 (`adb35c5` on `main`)  
 **Run:** 2026-06-27
 
+> **Historical:** This pilot used warn-only CI. LMS-AI enabled **fail on diverged** in Phase 5 (2026-06-27). See [GOVERNANCE.md](../GOVERNANCE.md) §7 and LMS-AI [RUNBOOK-DIVERGED](https://github.com/tusharwagh/LMS-AI/blob/main/docs/template-standards/RUNBOOK-DIVERGED.md).
+
 ## Integration summary
 
 | Item | Value |
