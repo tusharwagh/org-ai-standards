@@ -12,6 +12,14 @@ All notable template releases use [semver](https://semver.org/).
 
 Product repos pin via `.standards-version` and upgrade with `standards-upgrade` / `make standards-upgrade`.
 
+## [1.1.2] - 2026-07-02
+
+### Changed
+
+- GOVERNANCE §3/§7: Phase 5 fail mode documented as complete for LMS-AI; per-repo `CI_POLICY`
+- RELEASE.md: CI checklist reflects fail-on-diverged for LMS-AI
+- README: latest release v1.1.1
+
 ## [1.1.1] - 2026-06-27
 
 ### Changed

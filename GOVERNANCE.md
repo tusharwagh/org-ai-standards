@@ -38,10 +38,10 @@ Org-level profiles (`org-architecture`, `org-technology`, `org-business`) are de
 | In scope for v1 | Deferred |
 |-----------------|----------|
 | Submodule @ tag + copy materialization | `docs/standards/` extraction (fat rules OK) |
-| `check-standards` warn-only in CI | Fail mode on diverged (Phase 5) |
-| Four delivery profiles | Org profiles, waivers |
-| GitHub issues for contributions | Committed `contributions/inbox/` YAML |
-| Governance doc (this file) | Automated bootstrap scripts (manual OK for pilot) |
+| `check-standards` with per-repo `CI_POLICY` (`warn` or `fail`) | Org profiles, waivers |
+| Four delivery profiles | Committed `contributions/inbox/` YAML |
+| GitHub issues for contributions | Automated bootstrap (use `standards-init.sh`) |
+| Governance doc (this file) | — |
 
 ---
 
@@ -108,19 +108,21 @@ Product repos: standards upgrade on new tag
 |----------|----------------------|
 | **GitHub issues** on template repo | Deferred |
 
-**Product delivery is not blocked** while a contribution is under review (warn-only until Phase 5 fail mode).
+**Product delivery is not blocked** while a contribution is under review. Diverged managed copies block CI only when the product repo sets `.standards-ci-policy=fail` (LMS-AI since Phase 5).
 
 ---
 
-## 7. CI policy (preview)
+## 7. CI policy
 
-| Phase | Policy |
-|-------|--------|
-| Phase 3–4 (pilot) | `stale`, `diverged`, `missing` → **warn** |
-| Phase 5 | `diverged` on managed paths → **fail** |
-| Overlay edits | Never fail |
+Per-repo `.standards-ci-policy` (`warn` | `fail`). `check-standards` exit codes: `0` clean, `1` fail (diverged when policy is `fail`), `2` warn (stale, missing, pin_mismatch).
 
-**Warn → fail trigger (E3):** Manual decision by template owner after LMS-AI completes one successful upgrade cycle (Phase 3 exit). Not time-based for v1.
+| Consumer | Policy | Notes |
+|----------|--------|-------|
+| LMS-AI (Phase 5+) | **fail** on `diverged` | Stale/missing still warn (exit 2) |
+| New repos (`standards-init` default) | **warn** | Set `.standards-ci-policy=fail` when ready |
+| Overlay paths | — | Never drift-checked |
+
+**E3 (complete):** LMS-AI enabled fail mode after Phase 3 exit (2026-06-27).
 
 ---
 

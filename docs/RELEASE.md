@@ -43,7 +43,7 @@ git ls-remote origin refs/heads/main 'refs/tags/vX.Y.Z'
 ### 3. CI
 
 - [ ] Consumer workflow uses `actions/checkout` with `submodules: recursive`
-- [ ] Drift step is warn-only until Phase 5 (LMS-AI: `continue-on-error: true`)
+- [ ] Drift step reads `.standards-ci-policy` — LMS-AI uses **fail** on diverged (Phase 5+); stale/missing exit 2 (non-blocking)
 
 ## Semver (reminder)
 
