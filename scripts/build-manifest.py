@@ -85,8 +85,6 @@ def main() -> int:
         "version": 1,
         "never_manage": [".env", ".env.*"],
         "never_compare": [
-            ".cursor/rules/lms-ai/**",
-            ".cursor/skills/lms-ai/**",
             "docs/ai-sdlc/CHARTER.md",
             "docs/ai-sdlc/CHANGELOG.md",
             "docs/ai-sdlc/TRACEABILITY.md",

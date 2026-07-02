@@ -2,6 +2,29 @@
 
 All notable template releases use [semver](https://semver.org/).
 
+## Semver policy
+
+| Bump | When | Example |
+|------|------|---------|
+| **MAJOR** | Removed or renamed managed paths; breaking manifest change | Drop a profile file from manifest |
+| **MINOR** | New files, profiles, or backward-compatible standards | Add `standards-init.sh`, neutralize generic layer |
+| **PATCH** | Typos, clarifications, non-normative fixes | Wording in a rule |
+
+Product repos pin via `.standards-version` and upgrade with `standards-upgrade` / `make standards-upgrade`.
+
+## [1.1.0] - 2026-06-27
+
+### Added
+
+- Phase 6 scale-out: `bootstrap/standards-init.sh` for new product repos
+- `scripts/verify-phase6.sh` — second-repo pilot (`pilot-api` overlay, `core,python` profiles)
+- [docs/PHASE6-RESULTS.md](docs/PHASE6-RESULTS.md)
+
+### Changed
+
+- Generic cursor rules/skills: removed hardcoded `lms-ai` overlay paths (V6.2 — template not LMS-shaped)
+- Semver policy documented in this CHANGELOG (V6.3)
+
 ## [1.0.2] - 2026-06-27
 
 ### Added

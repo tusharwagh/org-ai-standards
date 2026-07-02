@@ -3,7 +3,7 @@
 Delivery template for AI-assisted repositories — generic Cursor rules/skills, AI-SDLC bootstrap assets, profiles, and drift checking.
 
 **Repository:** https://github.com/tusharwagh/org-ai-standards  
-**Latest release:** v1.0.2 (tag `v1.0.2`)  
+**Latest release:** v1.1.0 (tag `v1.1.0`)  
 **Governance:** [GOVERNANCE.md](GOVERNANCE.md) · **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Profiles
@@ -40,26 +40,16 @@ See [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) for pilot verification and 
 
 ```bash
 git submodule add https://github.com/tusharwagh/org-ai-standards.git standards
-cd standards && git checkout v1.0.1 && cd ..
+cd standards && git checkout v1.1.0 && cd ..
 
-cp standards/.standards-version.example .standards-version
-cp standards/.standards-latest.example .standards-latest
-cp standards/.standards-profiles.example .standards-profiles
-
-chmod +x standards/bootstrap/standards-materialize.sh
-STANDARDS_ROOT="$PWD" STANDARDS_REFERENCE=standards \
-  STANDARDS_MANIFEST=standards/manifest.json \
-  STANDARDS_PROFILES_FILE=.standards-profiles \
-  ./standards/bootstrap/standards-materialize.sh
-
-chmod +x standards/scripts/check-standards.sh
-STANDARDS_ROOT="$PWD" STANDARDS_REFERENCE=standards \
-  STANDARDS_MANIFEST=standards/manifest.json \
-  STANDARDS_VERSION_FILE=.standards-version \
-  STANDARDS_LATEST_FILE=.standards-latest \
-  STANDARDS_PROFILES_FILE=.standards-profiles \
-  ./standards/scripts/check-standards.sh
+./standards/bootstrap/standards-init.sh --overlay my-app --profiles core,python
 ```
+
+`standards-init` writes pin files, creates overlay dirs, instantiates `docs/ai-sdlc/`, materializes enabled profiles, and runs `check-standards`.
+
+**Profile subset example:** `core,python` omits agentic and frontend assets. **Overlay name** is your project (not `lms-ai`).
+
+### Manual bootstrap (alternative)
 
 **CI:** Use an **HTTPS submodule URL** in `.gitmodules` (not a relative path). Checkout with `submodules: recursive`. See [docs/RELEASE.md](docs/RELEASE.md).
 
@@ -96,7 +86,7 @@ docs/ai-sdlc/templates/       # AI-SDLC bootstrap templates
 profiles/                     # profile indexes
 manifest.json                 # managed paths (26 entries @ v1.0.1)
 scripts/                      # check-standards, build-manifest, verify-phase2
-bootstrap/                    # materialize, verify-template
+bootstrap/                    # materialize, verify-template, standards-init
 GOVERNANCE.md                 # ownership, change flow, contributions
 ```
 
@@ -107,6 +97,7 @@ GOVERNANCE.md                 # ownership, change flow, contributions
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution loop, issue template, `standards-contribute` |
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, change authority, upgrade, contributions |
 | [docs/RELEASE.md](docs/RELEASE.md) | Publish tags + product-repo bump order |
+| [docs/PHASE6-RESULTS.md](docs/PHASE6-RESULTS.md) | Scale-out pilot + standards-init |
 | [docs/PHASE4-RESULTS.md](docs/PHASE4-RESULTS.md) | Contribution loop verification |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI submodule fix |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |

@@ -5,8 +5,6 @@
     ".env.*"
   ],
   "never_compare": [
-    ".cursor/rules/lms-ai/**",
-    ".cursor/skills/lms-ai/**",
     "docs/ai-sdlc/CHARTER.md",
     "docs/ai-sdlc/CHANGELOG.md",
     "docs/ai-sdlc/TRACEABILITY.md"
