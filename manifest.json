@@ -107,6 +107,14 @@
       ]
     },
     {
+      "id": "cursor__skills__generic__openspec-standards__SKILL.md",
+      "reference": "cursor/skills/generic/openspec-standards/SKILL.md",
+      "materialize_to": ".cursor/skills/generic/openspec-standards/SKILL.md",
+      "profiles": [
+        "core"
+      ]
+    },
+    {
       "id": "cursor__skills__generic__python-code-analysis__SKILL.md",
       "reference": "cursor/skills/generic/python-code-analysis/SKILL.md",
       "materialize_to": ".cursor/skills/generic/python-code-analysis/SKILL.md",

@@ -3,7 +3,7 @@
 Delivery template for AI-assisted repositories — generic Cursor rules/skills, AI-SDLC bootstrap assets, profiles, and drift checking.
 
 **Repository:** https://github.com/tusharwagh/org-ai-standards  
-**Latest release:** v1.1.3 (tag `v1.1.3`)  
+**Latest release:** v1.2.0 (tag `v1.2.0`)  
 **Governance:** [GOVERNANCE.md](GOVERNANCE.md) · **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Profiles
@@ -40,12 +40,20 @@ See [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) for pilot verification and 
 
 ```bash
 git submodule add https://github.com/tusharwagh/org-ai-standards.git standards
-cd standards && git checkout v1.1.0 && cd ..
+cd standards && git checkout v1.2.0 && cd ..
 
 ./standards/bootstrap/standards-init.sh --overlay my-app --profiles core,python
 ```
 
-`standards-init` writes pin files, creates overlay dirs, instantiates `docs/ai-sdlc/`, materializes enabled profiles, and runs `check-standards`.
+`standards-init` writes pin files, creates overlay dirs, instantiates `docs/ai-sdlc/`, materializes enabled profiles, runs `check-standards`, and sets up OpenSpec.
+
+OpenSpec setup (`bootstrap/openspec-setup.sh`):
+
+- Installs the standalone `openspec` CLI when it is not on `PATH` (macOS and Linux). Windows uses the PowerShell command in the installation guide.
+- Runs `openspec init --tools cursor --no-animation --force` (override tools with `OPENSPEC_TOOLS`).
+- Copies [docs/openspec/INSTALLATION.md](docs/openspec/INSTALLATION.md) and [docs/openspec/CONFIGURATION.md](docs/openspec/CONFIGURATION.md) into the product repo.
+
+Those two guides are the install, update, uninstall, init, and `openspec/config.yaml` contract. Restart Cursor after init.
 
 **Profile subset example:** `core,python` omits agentic and frontend assets. **Overlay name** is your project (not `lms-ai`).
 
@@ -86,7 +94,8 @@ docs/ai-sdlc/templates/       # AI-SDLC bootstrap templates
 profiles/                     # profile indexes
 manifest.json                 # managed paths (26 entries @ v1.0.1)
 scripts/                      # check-standards, build-manifest, verify-phase2
-bootstrap/                    # materialize, verify-template, standards-init
+bootstrap/                    # materialize, verify-template, standards-init, openspec-setup
+docs/openspec/                # OpenSpec install and configuration guidelines
 GOVERNANCE.md                 # ownership, change flow, contributions
 ```
 
@@ -98,6 +107,8 @@ GOVERNANCE.md                 # ownership, change flow, contributions
 | [GOVERNANCE.md](GOVERNANCE.md) | Roles, change authority, upgrade, contributions |
 | [docs/RELEASE.md](docs/RELEASE.md) | Publish tags + product-repo bump order |
 | [docs/PHASE6-RESULTS.md](docs/PHASE6-RESULTS.md) | Scale-out pilot + standards-init |
+| [docs/openspec/INSTALLATION.md](docs/openspec/INSTALLATION.md) | OpenSpec CLI install, init, update, uninstall |
+| [docs/openspec/CONFIGURATION.md](docs/openspec/CONFIGURATION.md) | `openspec/config.yaml` fields and how workflows read them |
 | [docs/PHASE4-RESULTS.md](docs/PHASE4-RESULTS.md) | Contribution loop verification |
 | [docs/PHASE3-RESULTS.md](docs/PHASE3-RESULTS.md) | LMS-AI pilot + CI submodule fix |
 | [docs/SPEC.md](docs/SPEC.md) | Full specification |

@@ -34,6 +34,66 @@ else
   cat /tmp/v6-init.out
 fi
 
+log "=== V6.1 OpenSpec bootstrap ==="
+OPENSPEC_DOCS_INSTALL="$PILOT/docs/openspec/INSTALLATION.md"
+OPENSPEC_DOCS_CONFIG="$PILOT/docs/openspec/CONFIGURATION.md"
+OPENSPEC_CONFIG="$PILOT/openspec/config.yaml"
+OPENSPEC_SKILL="$PILOT/.cursor/skills/openspec-propose/SKILL.md"
+OPENSPEC_CMD="$PILOT/.cursor/commands/opsx-propose.md"
+if [[ -f "$OPENSPEC_DOCS_INSTALL" ]] && [[ -f "$OPENSPEC_DOCS_CONFIG" ]] \
+  && [[ -f "$OPENSPEC_CONFIG" ]] && [[ -f "$OPENSPEC_SKILL" ]] && [[ -f "$OPENSPEC_CMD" ]] \
+  && grep -q "schema: spec-driven" "$OPENSPEC_CONFIG" \
+  && grep -q "org-ai-standards:openspec-rules" "$OPENSPEC_CONFIG" \
+  && [[ -f "$PILOT/docs/openspec/standards-catalog.yaml" ]]; then
+  pass "V6.1 OpenSpec CLI init, config, and guidelines"
+else
+  fail "V6.1 OpenSpec bootstrap"
+  ls -la "$PILOT/docs/openspec" "$PILOT/openspec" "$PILOT/.cursor/skills" "$PILOT/.cursor/commands" 2>/dev/null || true
+fi
+
+log "=== V6.1 OpenSpec standards.md ==="
+CHANGE="$PILOT/openspec/changes/fixture-adherence"
+rm -rf "$CHANGE"
+mkdir -p "$CHANGE"
+if STANDARDS_ROOT="$PILOT" "$PILOT/standards/scripts/check-openspec-standards.sh" >/tmp/v6-os-missing.json; then
+  fail "V6.1 missing standards.md should be a finding"
+  cat /tmp/v6-os-missing.json
+else
+  if python3 -c 'import json; r=json.load(open("/tmp/v6-os-missing.json")); assert r["findings"], r; assert any(f.get("type")=="missing_file" for f in r["findings"]), r'; then
+    pass "V6.1 missing standards.md is a finding"
+  else
+    fail "V6.1 missing standards.md report"
+    cat /tmp/v6-os-missing.json
+  fi
+fi
+
+cat > "$CHANGE/standards.md" <<'EOF'
+| id | applies | adherence |
+|----|---------|-----------|
+| ai-sdlc-charter | yes | Autonomy A. Human gate is merge. |
+| ai-sdlc-change-log | yes | Stage implement. Intent is the fixture change. |
+| code-simplification | yes | No new branching. Keep the fixture to one file. |
+| doubt-driven-development | no | Mechanical fixture with no non-trivial decision. |
+| security-and-hardening | no | No untrusted input, auth, or storage. |
+| api-and-interface-design | no | No public interface change. |
+| sonarqube-quality | no | No application code in the fixture. |
+| clean-code-ddd-python | no | No domain or module code in the fixture. |
+| python-code-analysis | yes | Checker command is the verification for this fixture. |
+EOF
+
+if STANDARDS_ROOT="$PILOT" "$PILOT/standards/scripts/check-openspec-standards.sh" >/tmp/v6-os-ok.json; then
+  if python3 -c 'import json; r=json.load(open("/tmp/v6-os-ok.json")); assert r["status"]=="clean" and r["findings"]==[], r'; then
+    pass "V6.1 complete standards.md is clean"
+  else
+    fail "V6.1 complete standards.md report"
+    cat /tmp/v6-os-ok.json
+  fi
+else
+  fail "V6.1 complete standards.md should pass"
+  cat /tmp/v6-os-ok.json
+fi
+rm -rf "$CHANGE"
+
 log "=== V6.1 profile subset materialized ==="
 AGENTIC="$PILOT/.cursor/skills/generic/imda-agentic-ai-governance/SKILL.md"
 FRONTEND="$PILOT/.cursor/rules/generic/frontend-ui-engineering.md"

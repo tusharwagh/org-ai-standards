@@ -12,6 +12,13 @@ All notable template releases use [semver](https://semver.org/).
 
 Product repos pin via `.standards-version` and upgrade with `standards-upgrade` / `make standards-upgrade`.
 
+## [1.2.0] - 2026-11-02
+
+### Added
+
+- `bootstrap/openspec-setup.sh`: `standards-init` installs the OpenSpec CLI when missing, runs `openspec init` for Cursor, and copies install and configuration guidelines to `docs/openspec/`
+- OpenSpec changes record adherence in `standards.md`. `scripts/check-openspec-standards.sh` checks enabled profile rules and skills. Core skill `openspec-standards` tells the agent to write that file and run the check.
+
 ## [1.1.3] - 2026-07-02
 
 ### Changed

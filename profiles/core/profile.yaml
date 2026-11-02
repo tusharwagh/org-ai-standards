@@ -4,4 +4,5 @@ includes:
   - cursor/rules/generic/ai-sdlc-change-log.md
   - cursor/rules/generic/code-simplification.md
   - cursor/rules/generic/doubt-driven-development.md
+  - cursor/skills/generic/openspec-standards/**
   - docs/ai-sdlc/templates/**

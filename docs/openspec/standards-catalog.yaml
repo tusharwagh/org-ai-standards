@@ -1,0 +1,36 @@
+# Standards an active OpenSpec change must answer in standards.md.
+# One row per enabled profile. obligation is the question the adherence note answers.
+standards:
+  - id: ai-sdlc-charter
+    profile: core
+    obligation: State the autonomy level and the human gate.
+  - id: ai-sdlc-change-log
+    profile: core
+    obligation: State the stage and intent the apply step will append to the change log.
+  - id: code-simplification
+    profile: core
+    obligation: State whether the change adds complexity.
+  - id: doubt-driven-development
+    profile: core
+    obligation: State whether any decision is non-trivial, and the review if it is.
+  - id: security-and-hardening
+    profile: python
+    obligation: State how untrusted input, auth, storage, and third-party calls are handled.
+  - id: api-and-interface-design
+    profile: python
+    obligation: State how public interfaces stay stable.
+  - id: sonarqube-quality
+    profile: python
+    obligation: State how bugs, vulnerabilities, and complexity stay within the quality gate.
+  - id: clean-code-ddd-python
+    profile: python
+    obligation: State how module boundaries and domain logic follow the Python craft skill.
+  - id: python-code-analysis
+    profile: python
+    obligation: State the static and dynamic checks the change will run.
+  - id: imda-agentic-ai-governance
+    profile: agentic
+    obligation: State how agent scope, human accountability, and tool controls are bounded.
+  - id: frontend-ui-engineering
+    profile: frontend
+    obligation: State how the UI change stays production-quality.
